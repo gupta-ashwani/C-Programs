@@ -1,2 +1,2 @@
 # C-Programs
-C programs in lab
+DSA programs by owen.
