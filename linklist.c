@@ -53,7 +53,7 @@ void last_insert(){
 
 void random_insert(){
     struct node *ptr,*temp;
-    int x,a, count = 0;
+    int x,a, count = 1;
     ptr = (struct node *) malloc(sizeof(struct node ));
     if(ptr == NULL){
         printf("Linklist Overflow");
@@ -121,7 +121,7 @@ void last_delete(){
 
 void random_delete(){
     struct node *ptr, *temp, *ptr1;
-    int a, count =0;
+    int a, count = 1;
 
     if(head == NULL){
         printf("\nLisklist is Empty");
@@ -130,24 +130,25 @@ void random_delete(){
         free(head);
         printf("First Node deleted ");
     } else{
-        printf("Enter number of node after which you want to delete: ");
+        printf("Enter number of node which you want to delete: ");
         scanf("%d", &a);
         if(a<=0){
             printf("\nEnter valid position");
-        }
-
-        temp = head;
-        if (a==1){
-            head = head -> next;
-            free(ptr);
-            printf("\nFirst node deleted");
-        } else{
-            while(temp -> next != NULL && count != a-1){
-            ptr1 = temp;
-            temp = temp -> next;
-            count++;
+        }else {
+            temp = head;
+            if (a==1){
+                head = head -> next;
+                free(ptr);
+                printf("\nFirst node deleted");
+            } else{
+                while(temp -> next != NULL && count != a){
+                ptr1 = temp;
+                temp = temp -> next;
+                count++;
+                }
             }
         }
+        
         
         ptr1 -> next = temp -> next;
         free(temp);
@@ -157,26 +158,27 @@ void random_delete(){
 
 void search(){
     struct node *ptr;
-    int a, count = 0, flag;
+    int a, count = 0, flag = 0;
     if(head == NULL){
         printf("\nLisklist is Empty");
     } else{
         ptr = head;
         printf("\nEnter value you want to search :");
         scanf("%d", &a);
+
         while(ptr != NULL){
+            count++;
             if(ptr -> data == a){
-                count++;
                 flag = 1;
-            } else {
-                flag = 0;
+                printf("\nNumber found at %d node", count);
+                break;
             }
             ptr = ptr -> next;
         }
+        
         if(flag == 0){
             printf("\nNumber not found!!!");
         } else{
-            printf("\nNumber found at %d node", count+1);
         }
     }
 }
