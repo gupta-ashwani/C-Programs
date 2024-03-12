@@ -60,7 +60,7 @@ void random_insert(){
     } else{
         printf("Enter number of node after which you want to insert: ");
         scanf("%d", &a);
-        if (a <= 0) {
+        if (a < 0) {
         printf("\nEnter a valid position");
         } else{
             printf("Enter value: ");
@@ -71,14 +71,22 @@ void random_insert(){
                 head = ptr;
                 printf("Node inserted at first");
             } else{
-                temp = head;
-                while(temp -> next != NULL && count != a){
-                    temp = temp -> next;
-                    count++;
+                if(a==0){
+                    ptr -> data = x;
+                    ptr -> next = head;
+                    head = ptr;
+                    printf("Node inserted at first");
+                }else{
+                    temp = head;
+                    while(temp -> next != NULL && count != a){
+                        temp = temp -> next;
+                        count++;
+                    }
+                    ptr -> next = temp -> next;
+                    temp -> next = ptr;
+                    printf("Node inserted at %d", a);
                 }
-                ptr -> next = temp -> next;
-                temp -> next = ptr;
-                printf("Node inserted at %d", a);
+                
             }
         }
     }       
@@ -135,24 +143,22 @@ void random_delete(){
         if(a<=0){
             printf("\nEnter valid position");
         }else {
-            temp = head;
+            
             if (a==1){
-                head = head -> next;
-                free(ptr);
-                printf("\nFirst node deleted");
+                first_delete();
             } else{
+                temp = head;
                 while(temp -> next != NULL && count != a){
                 ptr1 = temp;
                 temp = temp -> next;
                 count++;
                 }
+                ptr1 -> next = temp -> next;
+                free(temp);
+                printf("%d Node deleted", a);
             }
         }
         
-        
-        ptr1 -> next = temp -> next;
-        free(temp);
-        printf("%d Node deleted", a);
     }
 }
 
