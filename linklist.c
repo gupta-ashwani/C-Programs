@@ -200,12 +200,12 @@ int main(){
     printf("\n0.Exit\n");  
     printf("1.Insert in begining\n");
     printf("2.Insert at last\n");
-    printf("3.Insert at any random location\n");
+    printf("3.Insert at any specified location\n");
     printf("4.Delete from Beginning\n");  
     printf("5.Delete from last\n");
     printf("6.Delete node after specified location \n");
     printf("7.Search for an element\n");
-    printf("8.Show\n");
+    printf("8.Display all nodes\n");
     int choice;
     do{
         printf("\nEnter chioce: ");
