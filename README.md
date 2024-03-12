@@ -1,2 +1,2 @@
 # C-Programs
-DSA programs by owen.
+DSA programs by own.
